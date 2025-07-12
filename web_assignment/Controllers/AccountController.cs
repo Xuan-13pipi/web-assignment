@@ -18,6 +18,7 @@ namespace web_assignment.Controllers
         {
             if (ModelState.IsValid)
             {
+                return RedirectToAction("test");
 
             }
 
