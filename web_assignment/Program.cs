@@ -1,7 +1,17 @@
+global using web_assignment.Models;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSqlServer<DB>($@"
+        Data Source=(localdb)\MSSQLLocalDB;
+        AttachDbFilename={builder.Environment.ContentRootPath}\DB.mdf;
+");
+
+builder.Services.AddAuthentication().AddCookie();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -15,11 +25,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
