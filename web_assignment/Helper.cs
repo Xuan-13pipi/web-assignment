@@ -10,8 +10,8 @@ namespace Demo;
 public class Helper
 {
     private readonly IWebHostEnvironment en;
-    private readonly IHttpContextAccessor ct;
-    
+    private readonly IHttpContextAccessor ct;// access to the SignInAsync() and SignOutAsync() methods 
+
     public Helper(IWebHostEnvironment en, IHttpContextAccessor ct)
     {
         this.en = en;
@@ -84,35 +84,36 @@ public class Helper
     {
         
         return ph.VerifyHashedPassword(0,hash,password)
-                == PasswordVerificationResult.Success;
+                == PasswordVerificationResult.Success; //Verify if hash matches to the given password
+
     }
 
     public void SignIn(string email, string role, bool rememberMe)
     {
-        // (1) Claim, identity and principal
-        // TODO
+        // (1) Claim（Represents the user's identity characteristics (key-value pairs)）, identity and principal
+
         List<Claim> claims = 
             [
-            new(ClaimTypes.Name, email),
-            new(ClaimTypes.Role, role),
+            new(ClaimTypes.Name, email),//Stores the user's unique ID (Email)
+            new(ClaimTypes.Role, role),//Stores user roles (such as "Admin")
             ];
 
-        // TODO
-        ClaimsIdentity identity = new(claims,"Cookies");
+        
+        ClaimsIdentity identity = new(claims,"Cookies");//the authentication scheme must be "Cookies"
 
-        // TODO
+
+
         ClaimsPrincipal principal = new(identity);
 
         // (2) Remember me (authentication properties)
-        // TODO
+        
         AuthenticationProperties properties = new()
         {
-            IsPersistent = rememberMe,
-        }
-            ;
+            IsPersistent = rememberMe,//Create a persistent login session（14 day） if user ticks Remember Me (true)
+        };
 
         // (3) Sign in
-        ct.HttpContext!.SignInAsync(principal, properties);
+        ct.HttpContext!.SignInAsync(principal, properties);//signin the user
     }
 
     public void SignOut()
@@ -128,9 +129,10 @@ public class Helper
 
         Random r = new();
 
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 10; i++)//Repeat 10 times
+
         {
-            password += s[r.Next(s.Length)];
+            password += s[r.Next(s.Length)];//r.Next(36) = Generate a random integer between 0 (inclusive) and 36 (exclusive).
         }
 
         return password;
