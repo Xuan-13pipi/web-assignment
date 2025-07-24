@@ -35,8 +35,7 @@ public class RegisterVM
     [Required]
     [StringLength(100)]
     public string Name { get; set; }
-    public IFormFile Photo { get; set; }
-
+    public string Phone { get; set; }
 
 }
 

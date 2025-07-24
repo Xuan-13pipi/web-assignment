@@ -24,6 +24,13 @@
                 <input asp-for="Email" placeholder="Enter your Email">
                 <span asp-validation-for="Email"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" placeholder="Enter your Phone Number">
+                <span asp-validation-for="Phone"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" type="password" placeholder="Create a password">
@@ -36,15 +43,6 @@
             </div>
       
 
-            <div class="form-group">
-                <label asp-for="Photo">Profile Photo</label>
-                <label class="upload-area">
-                    <img src="/images/photo-placeholder.svg" alt="Upload">
-                    <small>Click to upload your photo (JPEG/PNG)</small>
-                    <input asp-for="Photo" accept="image/jpeg,image/png" hidden>
-                </label>
-                <span asp-validation-for="Photo"></span>
-            </div>
 
             <div class="button-group">
                 <button type="submit" class="login-btn">Sign Up</button>
@@ -53,7 +51,7 @@
         </form>
         <div class="link-row">
             <a href="#">Forgot password?</a>
-            @Html.ActionLink("Register", "Register", "Account")
+            @Html.ActionLink("already have an account","Login", "Account")
         </div>
 
     </div>

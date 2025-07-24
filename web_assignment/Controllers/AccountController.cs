@@ -33,7 +33,7 @@ namespace web_assignment.Controllers
         public IActionResult Login(LoginVM viewModel,string? returnURL)
         {
 
-            var user = db.Users.Find(viewModel.Email);//Get user (admin or customer)record based on email(PK)
+            var user = db.Users.FirstOrDefault(user => user.Email == viewModel.Email);//Get user (admin or customer)record based on email(PK)
             
             if (user == null || !hp.VerifyPassword(user.PasswordHash,viewModel.Password))//Check if user exists and password is correct,if unable find user based on email or password not match
             {
@@ -104,15 +104,6 @@ namespace web_assignment.Controllers
                  ModelState.AddModelError("Email", "Email already exists.");
             }
 
-            if (ModelState.IsValid("Photo"))
-            {
-                var error = hp.ValidatePhoto(viewModel.Photo);
-                if (error != null)
-                {
-                    ModelState.AddModelError("Photo", error);
-                }
-            }
-
 
             if (ModelState.IsValid)
             {
@@ -122,14 +113,14 @@ namespace web_assignment.Controllers
                     Email = viewModel.Email,
                     PasswordHash = hp.HashPassword(viewModel.Password),
                     Username = viewModel.Name,
-                    Photo = hp.SavePhoto(viewModel.Photo,"photos"),
+                    Phone = viewModel.Phone
                 });
                 db.SaveChanges();
 
                 TempData["Info"] = "Registration successful! Please login.";
 
                 // Registration logic here
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
             return View(viewModel);
         }
