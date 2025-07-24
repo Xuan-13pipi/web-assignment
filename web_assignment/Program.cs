@@ -1,5 +1,5 @@
 global using web_assignment.Models;
-using Demo;
+using web_assignment;
 
 
 var builder = WebApplication.CreateBuilder(args);

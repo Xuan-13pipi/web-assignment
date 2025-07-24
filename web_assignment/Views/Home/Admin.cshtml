@@ -2,5 +2,16 @@
     Layout = null;
 }
 
+<link rel="stylesheet" href="~/css/page.css" />
+
+
+
+@if (TempData["Info"] != null)
+{
+    <div class="info">
+        @TempData["Info"]
+    </div>
+}
+
 <h1>Admin Page</h1>
 <p>Only [Admin] role can access this page.</p>

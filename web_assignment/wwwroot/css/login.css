@@ -48,7 +48,7 @@ body {
         text-align: center;
     }
 
-/* 表单组设计 */
+
 .form-group {
     margin-bottom: 24px;
     position: relative;
@@ -78,7 +78,7 @@ body {
             box-shadow: 0 0 0 3px rgba(211, 163, 0, 0.2);
         }
 
-/* 图片上传样式 */
+/* photo upload*/
 .upload-area {
     border: 2px dashed #e0e0e0;
     border-radius: 8px;
@@ -109,7 +109,7 @@ body {
         margin-top: 5px;
     }
 
-/* 按钮设计 */
+/* button */
 .button-group {
     display: flex;
     justify-content: center;
@@ -147,7 +147,7 @@ body {
         transform: translateY(-1px);
     }
 
-/* 验证错误样式 */
+/* error validation */
 span[data-valmsg-replace="true"] {
     color: #e74c3c;
     font-size: 13px;
@@ -170,4 +170,6 @@ span[data-valmsg-replace="true"] {
         .link-row a:hover {
             text-decoration: underline;
         }
+
+
 
