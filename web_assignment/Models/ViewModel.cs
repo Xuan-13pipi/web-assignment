@@ -26,14 +26,16 @@ public class RegisterVM
     public string Email { get; set; }
     [Required]
     [StringLength(100, ErrorMessage = "Password must be at least 6 characters long.", MinimumLength = 6)]
+    [DataType(DataType.Password)]
     public string Password { get; set; }
     [Required]
+    [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
     [Required]
+    [StringLength(100)]
     public string Name { get; set; }
-    public IFormFile Photo { get; set; }
-
+    public string Phone { get; set; }
 
 }
 

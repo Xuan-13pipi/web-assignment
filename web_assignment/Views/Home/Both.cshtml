@@ -2,5 +2,16 @@
     Layout = null;
 }
 
+<link rel="stylesheet" href="~/css/page.css" />
+
+
+
+@if (TempData["Info"] != null)
+{
+    <div class="info">
+        @TempData["Info"]
+    </div>
+}
+
 <h1>Both Page</h1>
 <p>Only [Authenticated] users can access this page.</p>

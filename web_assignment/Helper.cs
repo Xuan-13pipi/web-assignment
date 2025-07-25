@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-//using SixLabors.ImageSharp;
-//using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 
-namespace Demo;
+namespace web_assignment;
 
 public class Helper
 {
@@ -39,7 +39,7 @@ public class Helper
         return "";
     }
 
-   /* public string SavePhoto(IFormFile f, string folder)
+    public string SavePhoto(IFormFile f, string folder)
     {
         var file = Guid.NewGuid().ToString("n") + ".jpg";
         var path = Path.Combine(en.WebRootPath, folder, file);
@@ -57,7 +57,7 @@ public class Helper
 
         return file;
     }
-   */
+   
     public void DeletePhoto(string file, string folder)
     {
         file = Path.GetFileName(file);

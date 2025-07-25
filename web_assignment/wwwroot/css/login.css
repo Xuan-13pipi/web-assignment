@@ -3,7 +3,47 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Flash Message -------------------------------------------------------------- */
 
+.info {
+    position: fixed;
+    background: #666;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px 20px;
+    max-width: 500px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: -100px;
+    opacity: 0;
+}
+
+    .info:not(:empty) {
+        animation: fade 5s;
+    }
+
+@keyframes fade {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    10% {
+        top: 100px;
+        opacity: 1;
+    }
+
+    90% {
+        top: 100px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -100px;
+        opacity: 0;
+    }
+}
 body {
     background: url('/images/hotpot.png') no-repeat center center fixed;
     background-size: cover;
@@ -48,7 +88,7 @@ body {
         text-align: center;
     }
 
-/* 表单组设计 */
+
 .form-group {
     margin-bottom: 24px;
     position: relative;
@@ -78,7 +118,7 @@ body {
             box-shadow: 0 0 0 3px rgba(211, 163, 0, 0.2);
         }
 
-/* 图片上传样式 */
+/* photo upload*/
 .upload-area {
     border: 2px dashed #e0e0e0;
     border-radius: 8px;
@@ -109,7 +149,7 @@ body {
         margin-top: 5px;
     }
 
-/* 按钮设计 */
+/* button */
 .button-group {
     display: flex;
     justify-content: center;
@@ -147,7 +187,7 @@ body {
         transform: translateY(-1px);
     }
 
-/* 验证错误样式 */
+/* error validation */
 span[data-valmsg-replace="true"] {
     color: #e74c3c;
     font-size: 13px;
@@ -170,4 +210,6 @@ span[data-valmsg-replace="true"] {
         .link-row a:hover {
             text-decoration: underline;
         }
+
+
 

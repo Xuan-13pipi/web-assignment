@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<title>@ViewBag.Title</title> @*change*@
+    <title>LAWOOK Restaurant</title>
+
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@ 
+   @*<link rel="stylesheet" href="~/web_assignment.styles.css" asp-append-version="true" />*@ 
+    <link rel="stylesheet" href="~/css/flash.css">
+    
+    @RenderSection("head",false)
+
+</head>
+<body>
+
+    <div class="info">@Html.Raw(TempData["Info"])</div>
+
+
+  
+
+    <main>
+        @RenderBody()
+    </main>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/app.js" asp-append-version="true"></script>
+    
+</body>
+</html>

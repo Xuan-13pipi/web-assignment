@@ -5,6 +5,13 @@
 
 <link rel="stylesheet" href="~/css/login.css" />
 
+@if (TempData["Info"] != null)
+{
+    <div class="info">
+        @TempData["Info"]
+    </div>
+}
+
 
 <div class="background-overlay"></div>
 <div class="content">

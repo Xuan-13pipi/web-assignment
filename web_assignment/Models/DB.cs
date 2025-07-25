@@ -24,12 +24,19 @@ public class DB : DbContext
 
 public class User
 {
-    [Key,MaxLength(100)]
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int id { get; set; }
+    [MaxLength(100)]
+    
     public string Email { get; set; }
     [MaxLength(200)]
     public string PasswordHash { get; set; }
     [MaxLength(100)]
     public string Username { get; set; }
+    [MaxLength(12)]
+    public string Phone { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
     public string Role => GetType().Name;//Only field with get and set will be added to the database, so this will not be added to the database 
 
 
@@ -41,12 +48,13 @@ public class Admin : User
 
 public class Customer : User
 {
-    [MaxLength(100)]
-    public string Photo { get; set; } // Path to the user's photo
 
 }
 
 public class Staff : User
 {
+
 }
+
+
 

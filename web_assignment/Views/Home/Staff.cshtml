@@ -1,5 +1,12 @@
-﻿@{
-    Layout = null;
+﻿
+
+@*<link rel="stylesheet" href="~/css/page.css" />*@
+
+@if (TempData["Info"] != null)
+{
+    <div class="info">
+        @TempData["Info"]
+    </div>
 }
 
 <h1>Staff Page</h1>

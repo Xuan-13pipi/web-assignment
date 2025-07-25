@@ -1,4 +1,4 @@
-﻿using Demo;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using web_assignment.Models; 
 
@@ -33,11 +33,12 @@ namespace web_assignment.Controllers
         public IActionResult Login(LoginVM viewModel,string? returnURL)
         {
 
-            var user = db.Users.Find(viewModel.Email);//Get user (admin or customer)record based on email(PK)
+            var user = db.Users.FirstOrDefault(user => user.Email == viewModel.Email);//Get user (admin or customer)record based on email(PK)
             
             if (user == null || !hp.VerifyPassword(user.PasswordHash,viewModel.Password))//Check if user exists and password is correct,if unable find user based on email or password not match
             {
                 ModelState.AddModelError("", "Invalid email or password.");
+                return View(viewModel);
             }
 
             if (ModelState.IsValid)
@@ -93,13 +94,33 @@ namespace web_assignment.Controllers
         {
             return View();
         }
+        [HttpPost]
 
         public IActionResult Register(RegisterVM viewModel)
         {
+            if (ModelState.IsValid("Email")&&
+                db.Users.Any(user => user.Email == viewModel.Email))
+            {
+                 ModelState.AddModelError("Email", "Email already exists.");
+            }
+
+
             if (ModelState.IsValid)
             {
+                //Insert customer
+                db.Customers.Add(new()
+                {
+                    Email = viewModel.Email,
+                    PasswordHash = hp.HashPassword(viewModel.Password),
+                    Username = viewModel.Name,
+                    Phone = viewModel.Phone
+                });
+                db.SaveChanges();
+
+                TempData["Info"] = "Registration successful! Please login.";
+
                 // Registration logic here
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             return View(viewModel);
         }
