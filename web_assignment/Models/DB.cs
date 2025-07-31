@@ -12,8 +12,11 @@ public class DB : DbContext
     //DbSets
     public DbSet<User> Users { get; set; } // Represents the Users table in the database
     public DbSet<Admin> Admins { get; set; }
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Staff> Staffs { get; set; }
+    public DbSet<Manager> Managers { get; set; }
+    public DbSet<Cashier> Cashiers { get; set; }
+    public DbSet<Chef> Chefs { get; set; }
+
+    public DbSet<Waiter> Waiters { get; set; }
 
 }
 
@@ -46,12 +49,20 @@ public class Admin : User
 {
 }
 
-public class Customer : User
+public class Manager : User
+{
+
+}
+public class Cashier : User
+{
+
+}
+public class Chef : User
 {
 
 }
 
-public class Staff : User
+public class Waiter : User
 {
 
 }

@@ -1,0 +1,184 @@
+﻿@{
+    Layout = null;
+}
+
+<partial name="_FlashLayout" />
+
+<link rel="stylesheet" href="~/css/page.css" />
+<link rel="stylesheet" href="~/css/menu.css" />
+
+
+
+<div class="header">
+    <div class="logo-section">
+        <img src="~/images/logo.png" alt="Logo" class="logo">
+        <span class="brand-name">LAWOOK</span>
+        <a href="/Account/Logout">Logout</a>
+
+    </div>
+
+    <div class="search-section">
+        <input type="text" class="search-input" placeholder="Search" />
+    </div>
+
+    <div class="header-actions">
+        @*<button class="call-staff-btn">
+                 Call Staff
+            </button>*@
+        <div>Role</div>
+        <div><img src="/images/profile.svg" alt="Photo" width="30" height="30" style="vertical-align: middle; margin-right: 5px;" /></div>
+        
+        @*<div class="table-info">Table 1</div>*@ 
+        </div>
+</div>
+
+
+<div class="container">
+    <!-- Tables Panel -->
+    <div class="tables-panel">
+        <h3 class="panel-title"> Tables</h3>
+        <div class="table-grid">
+            <div class="table-btn" onclick="selectTable(this,1)">
+                <div><strong>T1</strong></div>
+                <small>2 seats</small><br>
+                <small style="color: green;">Available</small>
+            </div>
+            <div class="table-btn occupied" onclick="selectTable(this,2)">
+                <div><strong>T2</strong></div>
+                <small>4 seats</small><br>
+                <small style="color: orange;">Occupied</small>
+            </div>
+            <div class="table-btn" onclick="selectTable(this,3)">
+                <div><strong>T3</strong></div>
+                <small>6 seats</small><br>
+                <small style="color: green;">Available</small>
+            </div>
+            <div class="table-btn" onclick="selectTable(this,4)">
+                <div><strong>T4</strong></div>
+                <small>4 seats</small><br>
+                <small style="color: green;">Available</small>
+            </div>
+            <div class="table-btn occupied" onclick="selectTable(this,5)">
+                <div><strong>T5</strong></div>
+                <small>8 seats</small><br>
+                <small style="color: red;">Reserved</small>
+            </div>
+            <div class="table-btn" onclick="selectTable(this,6)">
+                <div><strong>T6</strong></div>
+                <small>2 seats</small><br>
+                <small style="color: green;">Available</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Panel -->
+    <div class="menu-panel">
+        <h3 class="panel-title"> Menu</h3>
+        <div class="menu-categories">
+            <button class="category-btn active" onclick="filterCategory('all')">Broth</button>
+            <button class="category-btn" onclick="filterCategory('mains')">Vegetable</button>
+            <button class="category-btn" onclick="filterCategory('drinks')">Meat</button>
+            <button class="category-btn" onclick="filterCategory('desserts')">Seafood</button>
+            <button class="category-btn" onclick="filterCategory('desserts')">Meatball</button>
+        </div>
+        <div class="menu-items">
+            <div class="product-card" data-item="Classic Spicy Hotpot" data-price="12.99">
+                <img src="/Food/Soup/Mala-Soup.jpg" alt="Classic Spicy Hotpot" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Classic Spicy Hotpot</div>
+                    <div class="product-price">
+                        RM12.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-item="Mild Tomato Broth" data-price="10.99">
+                <img src="" alt="Mild Tomato Broth" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Mild Tomato Broth</div>
+                    <div class="product-price">
+                        RM10.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-item="Mushroom Broth" data-price="11.99">
+                <img src="" alt="Mushroom Broth" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Mushroom Broth</div>
+                    <div class="product-price">
+                        RM11.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-item="Beef Slice" data-price="15.99">
+                <img src="" alt="Beef Slice" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Beef Slice</div>
+                    <div class="product-price">
+                        RM15.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-item="Fresh Vegetables" data-price="8.99">
+                <img src="" alt="Fresh Vegetables" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Fresh Vegetables</div>
+                    <div class="product-price">
+                        RM8.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-item="Seafood Mix" data-price="18.99">
+                <img src="" alt="Seafood Mix" class="product-image" />
+                <div class="product-info">
+                    <div class="product-name">Seafood Mix</div>
+                    <div class="product-price">
+                        RM18.99
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="order-panel">
+        <h3 class="panel-title">
+            <img src="/images/cart.svg" alt="Cart" width="25" height="25" style="vertical-align: middle; margin-right: 5px;" />
+            Current Order <span id="cart-count">(0)</span></h3>
+
+            <a href="#">View History</a> 
+
+        <div class="cart-items" id="cart-items-container">
+            <div class="empty-cart">
+                No items added yet
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal-amount">RM 0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax 6%</span>
+                <span id="tax-amount">RM 0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="total-amount">RM 0.00</span>
+            </div>
+            <button class="place-order-btn" id="place-order-btn">PLACE ORDER</button>
+        </div>
+    </div>
+</div>
+<script src="~/js/menu.js"></script>

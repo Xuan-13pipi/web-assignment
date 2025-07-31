@@ -61,14 +61,22 @@ namespace web_assignment.Controllers
                 {
                     return RedirectToAction("Admin", "Home");
                 }
-                else if (user.Role == "Customer")
+                else if (user.Role == "Waiter")
                 {
-                    return RedirectToAction("Customer", "Home");
-                }else if (user.Role == "Staff")
+                    return RedirectToAction("Waiter", "Home");
+                }else if (user.Role == "Manager")
                 {
-                    return RedirectToAction("Staff", "Home");
+                    return RedirectToAction("Manager", "Home");
                 }
-                    return RedirectToAction("Index", "Home");//Redirect to home page if no return URL is provided
+                else if (user.Role == "Cashier")
+                {
+                    return RedirectToAction("Cashier", "Home");
+                }
+                else if (user.Role == "Chef")
+                {
+                    return RedirectToAction("Chef", "Home");
+                }
+                return RedirectToAction("Index", "Home");//Redirect to home page if no return URL is provided
             }
                 return View(viewModel);
         }
@@ -108,7 +116,7 @@ namespace web_assignment.Controllers
             if (ModelState.IsValid)
             {
                 //Insert customer
-                db.Customers.Add(new()
+                db.Waiters.Add(new()
                 {
                     Email = viewModel.Email,
                     PasswordHash = hp.HashPassword(viewModel.Password),

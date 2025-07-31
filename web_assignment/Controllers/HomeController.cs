@@ -18,8 +18,8 @@ namespace web_assignment.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Customer")]
-        public IActionResult Customer()
+        [Authorize(Roles = "Waiter")]
+        public IActionResult Waiter()
         {
             return View();
         }
@@ -30,8 +30,18 @@ namespace web_assignment.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Staff")]
-        public IActionResult Staff()
+        [Authorize(Roles = "Chef")]
+        public IActionResult Chef()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Manager")]
+        public IActionResult Manager()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Cashier")]
+        public IActionResult Cashier()
         {
             return View();
         }

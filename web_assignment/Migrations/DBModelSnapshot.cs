@@ -74,18 +74,32 @@ namespace web_assignment.Migrations
                     b.HasDiscriminator().HasValue("Admin");
                 });
 
-            modelBuilder.Entity("web_assignment.Models.Customer", b =>
+            modelBuilder.Entity("web_assignment.Models.Cashier", b =>
                 {
                     b.HasBaseType("web_assignment.Models.User");
 
-                    b.HasDiscriminator().HasValue("Customer");
+                    b.HasDiscriminator().HasValue("Cashier");
                 });
 
-            modelBuilder.Entity("web_assignment.Models.Staff", b =>
+            modelBuilder.Entity("web_assignment.Models.Chef", b =>
                 {
                     b.HasBaseType("web_assignment.Models.User");
 
-                    b.HasDiscriminator().HasValue("Staff");
+                    b.HasDiscriminator().HasValue("Chef");
+                });
+
+            modelBuilder.Entity("web_assignment.Models.Manager", b =>
+                {
+                    b.HasBaseType("web_assignment.Models.User");
+
+                    b.HasDiscriminator().HasValue("Manager");
+                });
+
+            modelBuilder.Entity("web_assignment.Models.Waiter", b =>
+                {
+                    b.HasBaseType("web_assignment.Models.User");
+
+                    b.HasDiscriminator().HasValue("Waiter");
                 });
 #pragma warning restore 612, 618
         }
